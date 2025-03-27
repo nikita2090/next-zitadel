@@ -1,6 +1,11 @@
 import NextAuth from 'next-auth';
 import ZITADEL from 'next-auth/providers/zitadel';
 
+export enum UserRole {
+    manager = 'manager',
+    admin = 'admin',
+}
+
 declare module 'next-auth' {
     interface User {
         firstName?: string;
@@ -8,7 +13,7 @@ declare module 'next-auth' {
         loginName?: string;
         isEmailVerified?: boolean;
         gender?: string;
-        role: string;
+        role: UserRole;
     }
 }
 
